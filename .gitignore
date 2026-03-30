@@ -1,0 +1,9 @@
+# This is a placeholder for .gitignore
+# Add files and directories to ignore here
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+*.venv
