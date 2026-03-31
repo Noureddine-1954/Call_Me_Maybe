@@ -1,2 +1,19 @@
 [project]
-name = "Call Me Maybe"
+name = "call-me-maybe"
+version = "0.1.0"
+description = "Function calling in LLMs"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pydantic",
+]
+
+[dependency-groups]
+dev = [
+    "flake8",
+    "mypy",
+]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
