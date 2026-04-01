@@ -1,19 +1,18 @@
 [project]
 name = "call-me-maybe"
 version = "0.1.0"
-description = "Function calling in LLMs"
 requires-python = ">=3.10"
 dependencies = [
-    "numpy",
-    "pydantic",
+  "numpy",
+  "pydantic",
+  "llm-sdk",
 ]
+
+[tool.uv.sources]
+llm-sdk = { path = "./llm_sdk" }
 
 [dependency-groups]
 dev = [
-    "flake8",
-    "mypy",
+  "flake8",
+  "mypy",
 ]
-
-[build-system]
-requires = ["setuptools>=61"]
-build-backend = "setuptools.build_meta"

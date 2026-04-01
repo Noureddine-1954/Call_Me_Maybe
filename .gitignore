@@ -1,5 +1,5 @@
-# This is a placeholder for .gitignore
-# Add files and directories to ignore here
+# This ignores all hidden files excluding .gitignore itself
 
+/data/output/
 .*
-!/.gitignore
+!.gitignore
