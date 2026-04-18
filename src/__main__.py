@@ -1,4 +1,5 @@
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -23,21 +24,46 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
-    # first part, parsing the json's of both the prompts and functions
     args = build_parser().parse_args()
+
+    # ── Parse inputs ─────────────────────────────────────────────────────
     try:
         content = parser(args.functions_definition, args.input)
     except InputError as e:
         print(f"{e}", file=sys.stderr)
-        sys.exit(1)
+        return 1
 
-    # second part
+    # ── Load model ───────────────────────────────────────────────────────
+    print("Loading model ...", file=sys.stderr)
     model = Small_LLM_Model()
 
-    for prompt in content["prompts"]:
-        print(solve_one(prompt, content["functions"], model))
-    sys.exit(2)
+    # ── Process each prompt ──────────────────────────────────────────────
+    results = []
+    total = len(content["prompts"])
+    for i, prompt in enumerate(content["prompts"]):
+        print(
+            f"Processing prompt {i + 1}/{total}: {prompt.prompt!r}",
+            file=sys.stderr,
+        )
+        try:
+            result = solve_one(prompt, content["functions"], model)
+            results.append(result.model_dump())
+        except Exception as exc:  # noqa: BLE001
+            print(f"  Error: {exc}", file=sys.stderr)
+
+    # ── Write output ─────────────────────────────────────────────────────
+    output_path: Path = args.output
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with output_path.open("w", encoding="utf-8") as f:
+            json.dump(results, f, indent=2, ensure_ascii=False)
+        print(f"Results written to {output_path}", file=sys.stderr)
+    except OSError as exc:
+        print(f"Error writing output: {exc}", file=sys.stderr)
+        return 1
+
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

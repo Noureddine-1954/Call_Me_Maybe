@@ -16,3 +16,13 @@ dev = [
   "flake8",
   "mypy",
 ]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+mypy_path = "llm_sdk"
+exclude = ["llm_sdk/"]
+
+[[tool.mypy.overrides]]
+module = ["llm_sdk", "llm_sdk.*"]
+ignore_errors = true

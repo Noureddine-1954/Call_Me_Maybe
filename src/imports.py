@@ -1,4 +1,10 @@
-from llm_sdk.llm_sdk import Small_LLM_Model
+"""Central re-export of commonly used symbols.
+
+This module exists for convenience; individual source files import
+directly from their respective packages.
+"""
+
+from llm_sdk import Small_LLM_Model
 from pydantic import BaseModel, Field, model_validator
 from typing import Dict, List, Tuple, Optional, Any
 import numpy as np
