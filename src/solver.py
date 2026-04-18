@@ -51,7 +51,6 @@ def solve_one(
             parameters={},
         )
 
-    # ── 1. Load tokenizer vocabulary ─────────────────────────────────────────
     # 1. Load tokenizer vocabulary
     try:
         id_to_piece = load_id_to_piece(model)
