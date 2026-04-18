@@ -27,6 +27,6 @@ class PromptDef(BaseModel):
 
 class FunctionCallOut(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    prompt: PromptDef
+    prompt: str
     name: str
     parameters: dict[str, Any]
