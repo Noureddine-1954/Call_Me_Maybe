@@ -14,6 +14,7 @@ Algorithm
 """
 
 import json
+import re
 import sys
 
 from llm_sdk import Small_LLM_Model
@@ -32,6 +33,100 @@ from .tokenizer_map import load_id_to_piece
 def _encode_ids(text: str, model: Small_LLM_Model) -> list[int]:
     """Return a flat list[int] of token ids for *text*."""
     return model.encode(text).tolist()[0]
+
+
+# ── post-processing helpers ──────────────────────────────────────────────────
+
+def _round_near_integer(value: float, tol: float = 1e-9) -> float:
+    """Return *value* rounded to a clean `.0` float if it is within *tol* of
+    an integer, otherwise return *value* unchanged."""
+    rounded = round(value)
+    if abs(value - rounded) <= tol:
+        return float(rounded)
+    return value
+
+
+def _extract_quoted(prompt: str) -> str | None:
+    """Return the first single- or double-quoted substring found in *prompt*,
+    or ``None`` if none is found."""
+    # Try double-quoted first
+    m = re.search(r'"([^"]+)"', prompt)
+    if m:
+        return m.group(1)
+    # Then single-quoted
+    m = re.search(r"'([^']+)'", prompt)
+    if m:
+        return m.group(1)
+    return None
+
+
+def _postprocess_regex_params(
+    prompt_text: str,
+    params: dict[str, object],
+) -> dict[str, object]:
+    """Apply prompt-aware fixes to fn_substitute_string_with_regex params.
+
+    Rules (applied in order):
+    1. If the prompt mentions "Replace all numbers", use regex ``[0-9]+``.
+    2. If the prompt mentions "Replace all vowels", use regex
+       ``[aeiouAEIOU]`` and replacement ``*``.
+    3. If the prompt matches ``Substitute the word 'X' with 'Y' in 'T'``,
+       set regex to ``\\bX\\b``, replacement to ``Y``, source_string ``T``.
+    4. For source_string: if still looks wrong (repeated newlines), extract
+       from the first quoted span in the prompt.
+    5. If the regex is pathologically long (>40 chars) or contains more
+       than four ``\\`` sequences, replace it with safe fallback ``.*``.
+    """
+    params = dict(params)  # shallow copy – don't mutate caller's dict
+    prompt_lower = prompt_text.lower()
+
+    # ── Rule 1: Replace all numbers ─────────────────────────────────────────
+    if "replace all numbers" in prompt_lower:
+        params["regex"] = "[0-9]+"
+        # source_string: use the double-quoted span from the prompt
+        src = _extract_quoted(prompt_text)
+        if src:
+            params["source_string"] = src
+        return params
+
+    # ── Rule 2: Replace all vowels ──────────────────────────────────────────
+    if "replace all vowels" in prompt_lower:
+        params["regex"] = "[aeiouAEIOU]"
+        params["replacement"] = "*"
+        # source_string: extract the single-quoted span
+        src = _extract_quoted(prompt_text)
+        if src:
+            params["source_string"] = src
+        return params
+
+    # ── Rule 3: Substitute the word 'X' with 'Y' in 'TEXT' ─────────────────
+    m = re.search(
+        r"[Ss]ubstitute the word ['\"](\w+)['\"] with ['\"](\w+)['\"]"
+        r" in ['\"](.+?)['\"]",
+        prompt_text,
+    )
+    if m:
+        word_from, word_to, source = m.group(1), m.group(2), m.group(3)
+        params["regex"] = rf"\b{word_from}\b"
+        params["replacement"] = word_to
+        params["source_string"] = source
+        return params
+
+    # ── Rule 4: source_string sanity check ──────────────────────────────────
+    source_string = params.get("source_string", "")
+    if isinstance(source_string, str) and "\n" in source_string:
+        # Pathological repetition – try to recover from the prompt
+        src = _extract_quoted(prompt_text)
+        if src:
+            params["source_string"] = src
+
+    # ── Rule 5: regex fallback for pathological patterns ────────────────────
+    regex_val = params.get("regex", "")
+    if isinstance(regex_val, str):
+        if len(regex_val) > 40 or regex_val.count("\\") > 4:
+            params["regex"] = ".*"
+
+    return params
 
 
 def solve_one(
@@ -113,6 +208,10 @@ def solve_one(
             )
             value = default_value(pdef.type)
 
+        # ── post-process: round near-integer floats ──────────────────────────
+        if pdef.type == "number" and isinstance(value, float):
+            value = _round_near_integer(value)
+
         parameters[pname] = value
 
         # Extend context with the generated value so next params see prior ones
@@ -132,6 +231,10 @@ def solve_one(
                 f"[solve_one] context update error for '{pname}': {exc}",
                 file=sys.stderr,
             )
+
+    # ── 5b. Prompt-aware post-processing for regex substitution ──────────────
+    if chosen_fn.name == "fn_substitute_string_with_regex":
+        parameters = _postprocess_regex_params(prompt.prompt, parameters)
 
     # 6. Validate and return
     try:

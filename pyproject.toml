@@ -15,6 +15,7 @@ llm-sdk = { path = "./llm_sdk" }
 dev = [
   "flake8",
   "mypy",
+  "pytest>=9.0.3",
 ]
 
 [tool.mypy]
