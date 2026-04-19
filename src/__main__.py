@@ -1,6 +1,7 @@
 import argparse
 import json
 import sys
+import os
 from pathlib import Path
 
 from .parser import parser, InputError
@@ -34,8 +35,9 @@ def main() -> int:
         return 1
 
     # ── Load model ───────────────────────────────────────────────────────
-    print("Loading model ...", file=sys.stderr)
     model = Small_LLM_Model()
+    os.system('clear')
+    print("Loading model ...\n", file=sys.stderr)
 
     # ── Process each prompt ──────────────────────────────────────────────
     results = []
@@ -46,7 +48,9 @@ def main() -> int:
             file=sys.stderr,
         )
         try:
+            print('result ->', end=' ')
             result = solve_one(prompt, content["functions"], model)
+            print(result, end='\n\n')
             results.append(result.model_dump())
         except Exception as exc:  # noqa: BLE001
             print(f"  Error: {exc}", file=sys.stderr)

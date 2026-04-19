@@ -51,11 +51,3 @@ def get_piece(token_id: int, id_to_piece: list[str]) -> str:
         return id_to_piece[token_id]
     return ""
 
-
-def display_piece(piece: str) -> str:
-    """Convert a stored piece to its display form.
-
-    BPE tokenizers sometimes use Ġ (U+0120) or Ċ (U+010A) as
-    word-boundary / newline markers.  We normalise them here.
-    """
-    return piece.replace("\u0120", " ").replace("\u010a", "\n")
