@@ -3,3 +3,7 @@
 /data/output/
 .*
 !.gitignore
+__pycache__/
+*.pyc
+*.pyo
+.venv/
