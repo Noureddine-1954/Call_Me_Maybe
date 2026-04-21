@@ -48,7 +48,7 @@ def main() -> int:
             file=sys.stderr,
         )
         try:
-            print('result ->', end=' ')
+            print('result ->', end=' ', flush=True)
             result = solve_one(prompt, content["functions"], model)
             print(result, end='\n\n')
             results.append(result.model_dump())

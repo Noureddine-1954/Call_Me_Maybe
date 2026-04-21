@@ -1,14 +1,11 @@
 import math
 
-from .constrained_decoding import choose_best_function
-
 from llm_sdk import Small_LLM_Model
 
 
 def _encode_ids(text: str, model: Small_LLM_Model) -> list[int]:
     """Return a flat list[int] of token ids for *text*."""
     return model.encode(text).tolist()[0]
-
 
 def build_function_token_map(functions, model):
     token_map = {}
@@ -43,7 +40,6 @@ def choose_best_function(input_ids, functions, model):
 
     for name, tokens in fn_token_map.items():
         score = score_candidate(input_ids, tokens, model)
-        print(name, score)
 
         if score > best_score:
             best_score = score

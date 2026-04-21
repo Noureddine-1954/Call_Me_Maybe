@@ -4,12 +4,12 @@ from typing import Literal, Any
 
 class FunctionParamDef(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    type: Literal["string", "number", "boolean", "object", "array"]
+    type: Literal["string", "number"]
 
 
 class FunctionReturnsDef(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    type: Literal["string", "number", "boolean", "object", "array"]
+    type: Literal["string", "number"]
 
 
 class FunctionDef(BaseModel):

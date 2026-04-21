@@ -1,7 +1,7 @@
 from .json_definitions import FunctionDef, PromptDef
 
 
-def build_prefix(prompt: PromptDef, functions: list[FunctionDef]) -> str:
+def prompt_function_choice(prompt: PromptDef, functions: list[FunctionDef]) -> str:
     """Build a compact, stable semantic prefix for function selection.
 
     The model only needs to:
@@ -40,5 +40,41 @@ def build_prefix(prompt: PromptDef, functions: list[FunctionDef]) -> str:
 
     # Anchor into constrained decoding
     lines.append('Response: {"name": "')
+
+    return "\n".join(lines)
+
+def prompt_parameter_extraction(prompt: PromptDef, function: FunctionDef) -> str:
+    """Build prefix for PARAMETER EXTRACTION ONLY."""
+
+    lines: list[str] = []
+
+    # Role
+    lines.append("You are a parameter extraction engine.")
+    lines.append("Your ONLY task is to extract parameters for the given function.")
+    lines.append("")
+
+    # Function definition (VERY IMPORTANT)
+    lines.append("Function to call:")
+    lines.append(f"- {function.name}: {function.description}")
+
+    lines.append("Parameters:")
+    for pname, pdef in function.parameters.items():
+        lines.append(f"- {pname}: {pdef.type}")
+
+    # Rules
+    lines.append("")
+    lines.append("Rules:")
+    lines.append("- Extract values ONLY from the user input.")
+    lines.append("- Respect parameter types exactly.")
+    lines.append("- Do NOT invent missing values.")
+    lines.append("- If a value is missing, use a default value.")
+    lines.append("- Output ONLY parameter values.")
+
+    # User prompt
+    lines.append("")
+    lines.append(f"User: {prompt.prompt}")
+
+    # Anchor (you will continue with constrained decoding)
+    lines.append('Response: {"parameters": {')
 
     return "\n".join(lines)
