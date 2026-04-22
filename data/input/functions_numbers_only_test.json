@@ -1,0 +1,76 @@
+[
+  {
+    "name": "fn_add_numbers",
+    "description": "Add two numbers and return the sum.",
+    "parameters": {
+      "a": {"type": "number"},
+      "b": {"type": "number"}
+    },
+    "returns": {"type": "number"}
+  },
+  {
+    "name": "fn_subtract_numbers",
+    "description": "Subtract b from a and return the result.",
+    "parameters": {
+      "a": {"type": "number"},
+      "b": {"type": "number"}
+    },
+    "returns": {"type": "number"}
+  },
+  {
+    "name": "fn_multiply_numbers",
+    "description": "Multiply two numbers and return the product.",
+    "parameters": {
+      "a": {"type": "number"},
+      "b": {"type": "number"}
+    },
+    "returns": {"type": "number"}
+  },
+  {
+    "name": "fn_divide_numbers",
+    "description": "Divide a by b and return the quotient.",
+    "parameters": {
+      "a": {"type": "number"},
+      "b": {"type": "number"}
+    },
+    "returns": {"type": "number"}
+  },
+  {
+    "name": "fn_power",
+    "description": "Raise base to exponent and return the result.",
+    "parameters": {
+      "base": {"type": "number"},
+      "exponent": {"type": "number"}
+    },
+    "returns": {"type": "number"}
+  },
+  {
+    "name": "fn_average_three_numbers",
+    "description": "Compute the average of three numbers.",
+    "parameters": {
+      "a": {"type": "number"},
+      "b": {"type": "number"},
+      "c": {"type": "number"}
+    },
+    "returns": {"type": "number"}
+  },
+  {
+    "name": "fn_clamp",
+    "description": "Clamp value to the inclusive range [min_value, max_value].",
+    "parameters": {
+      "value": {"type": "number"},
+      "min_value": {"type": "number"},
+      "max_value": {"type": "number"}
+    },
+    "returns": {"type": "number"}
+  },
+  {
+    "name": "fn_percentage_of",
+    "description": "Return percent% of value.",
+    "parameters": {
+      "value": {"type": "number"},
+      "percent": {"type": "number"}
+    },
+    "returns": {"type": "number"}
+  }
+]

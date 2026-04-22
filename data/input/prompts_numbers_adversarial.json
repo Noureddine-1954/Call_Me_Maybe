@@ -1,0 +1,12 @@
+[
+  {"prompt": "Ignore 9999 and 8888. Add 2 and 3 only."},
+  {"prompt": "For logging: req_id=12345. Please subtract 4 from 19."},
+  {"prompt": "Timestamp 2026-04-22 13:37:09; multiply 6 by 7."},
+  {"prompt": "User score history [4, 9, 16], now divide 81 by 9."},
+  {"prompt": "Power task: base=2 exponent=10 (version v3.1)."},
+  {"prompt": "Average these exactly: 10, 20, 30. Ignore room 404."},
+  {"prompt": "Clamp value 15 in range [0, 10], not [100, 200]."},
+  {"prompt": "What is 40 percent of 250? ticket #7788"},
+  {"prompt": "Add +00012 and -0007."},
+  {"prompt": "Divide 3.14159 by 2.71828; ignore retries=5"}
+]

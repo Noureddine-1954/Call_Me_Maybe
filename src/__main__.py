@@ -2,12 +2,26 @@ import argparse
 import json
 import sys
 import os
+import time
 from pathlib import Path
 
 from .parser import parser, InputError
 from .solver import solve_one
 
 from llm_sdk import Small_LLM_Model
+
+
+def _format_duration(seconds: float) -> str:
+    """Return a compact human-readable duration."""
+    if seconds < 1:
+        return f"{seconds * 1000:.0f} ms"
+    minutes, secs = divmod(seconds, 60)
+    if minutes < 1:
+        return f"{secs:.2f} s"
+    hours, mins = divmod(int(minutes), 60)
+    if hours < 1:
+        return f"{mins}m {secs:.1f}s"
+    return f"{hours}h {mins}m {secs:.1f}s"
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -25,6 +39,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
+    time_list = []
     args = build_parser().parse_args()
 
     # ── Parse inputs ─────────────────────────────────────────────────────
@@ -48,10 +63,14 @@ def main() -> int:
             file=sys.stderr,
         )
         try:
+            start_time = time.perf_counter()
             print('result ->', end=' ', flush=True)
             result = solve_one(prompt, content["functions"], model)
-            print(result, end='\n\n')
+            elapsed = time.perf_counter() - start_time
+            print(result)
+            print(f"[took: {_format_duration(elapsed)}]", file=sys.stderr, end='\n\n')
             results.append(result.model_dump())
+            times.append(elapsed)
         except Exception as exc:  # noqa: BLE001
             print(f"  Error: {exc}", file=sys.stderr)
 
@@ -65,6 +84,9 @@ def main() -> int:
     except OSError as exc:
         print(f"Error writing output: {exc}", file=sys.stderr)
         return 1
+    
+    print(f"Processed {len(content['prompts'])} in {sum(time_list)}")
+    print(f"An average of:", sum(time_list)//len(time_list), "per prompt.")
 
     return 0
 

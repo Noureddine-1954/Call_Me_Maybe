@@ -37,4 +37,3 @@ def solve_one(
         name=best_function,
         parameters=extracted_parameters  # placeholder
     )
-
