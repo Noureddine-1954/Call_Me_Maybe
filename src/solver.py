@@ -29,7 +29,7 @@ def solve_one(
         fn.name: fn for fn in functions
     }
     parameter_prefix_ids = _encode_ids(prompt_parameter_extraction(prompt, function_map[best_function]), model)
-    extracted_parameters = extract_parameters(parameter_prefix_ids, function_map[best_function], model)
+    extracted_parameters = extract_parameters(prompt.prompt, parameter_prefix_ids, function_map[best_function], model)
     # print(prompt.prompt, best_function, {'test': None})
 
     return FunctionCallOut(

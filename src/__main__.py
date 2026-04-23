@@ -70,7 +70,7 @@ def main() -> int:
             print(result)
             print(f"[took: {_format_duration(elapsed)}]", file=sys.stderr, end='\n\n')
             results.append(result.model_dump())
-            times.append(elapsed)
+            time_list.append(elapsed)
         except Exception as exc:  # noqa: BLE001
             print(f"  Error: {exc}", file=sys.stderr)
 
@@ -84,9 +84,9 @@ def main() -> int:
     except OSError as exc:
         print(f"Error writing output: {exc}", file=sys.stderr)
         return 1
-    
-    print(f"Processed {len(content['prompts'])} in {sum(time_list)}")
-    print(f"An average of:", sum(time_list)//len(time_list), "per prompt.")
+
+    print(f"Processed {len(content['prompts'])} prompts in {_format_duration(sum(time_list))}")
+    print(f"An average of:", _format_duration(sum(time_list)/len(time_list)), "per prompt.")
 
     return 0
 
