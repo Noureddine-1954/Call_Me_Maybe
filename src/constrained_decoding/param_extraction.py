@@ -1,9 +1,7 @@
 from llm_sdk import Small_LLM_Model
 
-from .llm_helpers import (score_candidate,
-                          _all_valid_numbers,
+from .llm_helpers import (_all_valid_numbers,
                           _all_valid_strings,
-                          _is_number,
                           _encode_ids,
                           best_ordered_assignment)
 
@@ -18,7 +16,6 @@ def _extract_number_params(
     return {k: float(v) if v else 0.0 for k, v in result.items()}
 
 
-# extract_parameters.py
 def _extract_string_params(
     original_prompt: str,
     param_names: list[str],
@@ -36,12 +33,13 @@ def _extract_regex_params(context: list[int], model: Small_LLM_Model) -> str:
 
 def extract_parameters(
     original_prompt: str,
-    input_ids: list[int],
+    input_ids: list[int],   # kept for compatibility, intentionally not used for context now
     function,
     model: Small_LLM_Model,
 ) -> dict:
     """Dispatcher: extract all parameters for function by type."""
-    context = input_ids[:]
+    # IMPORTANT: use only user prompt as scoring context (avoid instruction noise)
+    context = _encode_ids(original_prompt, model)
 
     string_param_names = [n for n, p in function.parameters.items() if p.type.lower() == 'string']
     string_values = _extract_string_params(original_prompt, string_param_names, context, model)
@@ -60,6 +58,9 @@ def extract_parameters(
 
         params[arg_name] = value
         if value != "":
-            context.extend(_encode_ids(f"\"{arg_name}\": {value}, ", model))
+            if isinstance(value, str):
+                context.extend(_encode_ids(f"\"{arg_name}\": \"{value}\", ", model))
+            else:
+                context.extend(_encode_ids(f"\"{arg_name}\": {value}, ", model))
 
     return params

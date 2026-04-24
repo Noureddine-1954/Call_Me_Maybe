@@ -1,24 +1,3 @@
 [
-  { "prompt": "Capitalize 'hello'" },
-  { "prompt": "Capitalize the word hello" },
-
-  { "prompt": "Concatenate 'foo' and 'bar'" },
-  { "prompt": "Join the strings hello and world" },
-  { "prompt": "Concatenate 'hello world' and 'goodbye world'" },
-  { "prompt": "Concatenate 'the quick brown fox' and 'jumped over the lazy dog'" },
-
-  { "prompt": "Replace 'cat' with 'dog' in 'the cat sat on the mat'" },
-  { "prompt": "Replace 'sat' with 'slept' in 'the cat sat on the mat'" },
-  { "prompt": "Replace 'cat' with 'very large dog' in 'a cat is a cat'" },
-  { "prompt": "Replace 'dog' with 'cat' in 'the dog chased the cat past the dog'" },
-
-  { "prompt": "Remove the prefix 'un' from 'unhappy'" },
-  { "prompt": "Remove the prefix 'pre' from 'preprocessing'" },
-  { "prompt": "Trim the prefix 'hello ' from 'hello world'" },
-  { "prompt": "Strip 'over' from the start of 'overconfident'" },
-
-  { "prompt": "Join 'hello' and 'world' with '-'" },
-  { "prompt": "Join 'first' and 'last' with ', '" },
-  { "prompt": "Join 'alpha' and 'omega' with the separator 'and'" },
-  { "prompt": "Join the strings foo and bar separated by a pipe" }
+  {"prompt": "What is the reverse of the string: (ignore this: [what am i talking about]) What"}
 ]

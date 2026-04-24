@@ -43,6 +43,7 @@ def prompt_function_choice(prompt: PromptDef, functions: list[FunctionDef]) -> s
 
     return "\n".join(lines)
 
+
 def prompt_parameter_extraction(prompt: PromptDef, function: FunctionDef) -> str:
     """Build prefix for PARAMETER EXTRACTION ONLY."""
 

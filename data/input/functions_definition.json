@@ -1,48 +1,56 @@
 [
-  {
-    "name": "fn_capitalize",
-    "description": "Capitalize the first letter of a string.",
-    "parameters": {
-      "s": { "type": "string" }
+    {
+      "name": "fn_capitalize",
+      "description": "Capitalize the first letter of a string.",
+      "parameters": {
+        "s": { "type": "string" }
+      },
+      "returns": { "type": "string" }
     },
-    "returns": { "type": "string" }
-  },
-  {
-    "name": "fn_concat",
-    "description": "Concatenate two strings together.",
-    "parameters": {
-      "a": { "type": "string" },
-      "b": { "type": "string" }
+    {
+      "name": "fn_concat",
+      "description": "Concatenate two strings together.",
+      "parameters": {
+        "a": { "type": "string" },
+        "b": { "type": "string" }
+      },
+      "returns": { "type": "string" }
     },
-    "returns": { "type": "string" }
-  },
-  {
-    "name": "fn_replace_word",
-    "description": "Replace every occurrence of a target word with a replacement word in a source string.",
-    "parameters": {
-      "source": { "type": "string" },
-      "target": { "type": "string" },
-      "replacement": { "type": "string" }
+    {
+      "name": "fn_replace_word",
+      "description": "Replace every occurrence of a target word with a replacement word in a source string.",
+      "parameters": {
+        "source": { "type": "string" },
+        "target": { "type": "string" },
+        "replacement": { "type": "string" }
+      },
+      "returns": { "type": "string" }
     },
-    "returns": { "type": "string" }
-  },
-  {
-    "name": "fn_trim_prefix",
-    "description": "Remove a prefix string from the start of a source string.",
-    "parameters": {
-      "source": { "type": "string" },
-      "prefix": { "type": "string" }
+    {
+      "name": "fn_trim_prefix",
+      "description": "Remove a prefix string from the start of a source string.",
+      "parameters": {
+        "source": { "type": "string" },
+        "prefix": { "type": "string" }
+      },
+      "returns": { "type": "string" }
     },
-    "returns": { "type": "string" }
-  },
-  {
-    "name": "fn_join_with_separator",
-    "description": "Join two strings with a separator string between them.",
-    "parameters": {
-      "first": { "type": "string" },
-      "second": { "type": "string" },
-      "separator": { "type": "string" }
+    {
+      "name": "rev",
+      "description": "this function reveres a string.",
+      "parameters": {
+        "s": { "type": "string" }
+      },
+      "returns": { "type": "string" }
     },
-    "returns": { "type": "string" }
-  }
-]
+    {
+      "name": "fn_join_with_separator",
+      "description": "Join two strings with a separator string between them.",
+      "parameters": {
+        "first": { "type": "string" },
+        "second": { "type": "string" },
+        "separator": { "type": "string" }
+      },
+      "returns": { "type": "string" }
+    }
+  ]
