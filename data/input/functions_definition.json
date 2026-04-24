@@ -1,71 +1,48 @@
 [
   {
-    "name": "fn_add_numbers",
-    "description": "Add two numbers together and return their sum.",
+    "name": "fn_capitalize",
+    "description": "Capitalize the first letter of a string.",
     "parameters": {
-      "a": {
-        "type": "number"
-      },
-      "b": {
-        "type": "number"
-      }
+      "s": { "type": "string" }
     },
-    "returns": {
-      "type": "number"
-    }
+    "returns": { "type": "string" }
   },
   {
-    "name": "fn_greet",
-    "description": "Generate a greeting message for a person by name.",
+    "name": "fn_concat",
+    "description": "Concatenate two strings together.",
     "parameters": {
-      "name": {
-        "type": "string"
-      }
+      "a": { "type": "string" },
+      "b": { "type": "string" }
     },
-    "returns": {
-      "type": "string"
-    }
+    "returns": { "type": "string" }
   },
   {
-    "name": "fn_reverse_string",
-    "description": "Reverse a string and return the reversed result.",
+    "name": "fn_replace_word",
+    "description": "Replace every occurrence of a target word with a replacement word in a source string.",
     "parameters": {
-      "s": {
-        "type": "string"
-      }
+      "source": { "type": "string" },
+      "target": { "type": "string" },
+      "replacement": { "type": "string" }
     },
-    "returns": {
-      "type": "string"
-    }
+    "returns": { "type": "string" }
   },
   {
-    "name": "fn_get_square_root",
-    "description": "Calculate the square root of a number.",
+    "name": "fn_trim_prefix",
+    "description": "Remove a prefix string from the start of a source string.",
     "parameters": {
-      "a": {
-        "type": "number"
-      }
+      "source": { "type": "string" },
+      "prefix": { "type": "string" }
     },
-    "returns": {
-      "type": "number"
-    }
+    "returns": { "type": "string" }
   },
   {
-    "name": "fn_substitute_string_with_regex",
-    "description": "Replace all occurrences matching a regex pattern in a string.",
+    "name": "fn_join_with_separator",
+    "description": "Join two strings with a separator string between them.",
     "parameters": {
-      "source_string": {
-        "type": "string"
-      },
-      "regex": {
-        "type": "string"
-      },
-      "replacement": {
-        "type": "string"
-      }
+      "first": { "type": "string" },
+      "second": { "type": "string" },
+      "separator": { "type": "string" }
     },
-    "returns": {
-      "type": "string"
-    }
+    "returns": { "type": "string" }
   }
 ]

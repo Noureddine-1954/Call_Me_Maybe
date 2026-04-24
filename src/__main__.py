@@ -86,7 +86,7 @@ def main() -> int:
         return 1
 
     print(f"Processed {len(content['prompts'])} prompts in {_format_duration(sum(time_list))}")
-    print(f"An average of:", _format_duration(sum(time_list)/len(time_list)), "per prompt.")
+    print(f"An average of: {_format_duration(sum(time_list)/len(time_list))} per prompt.")
 
     return 0
 

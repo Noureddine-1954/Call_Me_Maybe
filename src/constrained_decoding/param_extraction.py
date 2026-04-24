@@ -2,36 +2,36 @@ from llm_sdk import Small_LLM_Model
 
 from .llm_helpers import (score_candidate,
                           _all_valid_numbers,
+                          _all_valid_strings,
                           _is_number,
                           _encode_ids,
                           best_ordered_assignment)
 
 
 def _extract_number_params(
+    original_prompt: str,
     param_names: list[str],
     context: list[int],
     model: Small_LLM_Model,
 ) -> dict[str, float]:
-    result = best_ordered_assignment(param_names, _all_valid_numbers(context, model), context, model)
+    result = best_ordered_assignment(param_names, _all_valid_numbers(original_prompt), context, model)
     return {k: float(v) if v else 0.0 for k, v in result.items()}
 
 
+# extract_parameters.py
 def _extract_string_params(
+    original_prompt: str,
     param_names: list[str],
     context: list[int],
     model: Small_LLM_Model,
 ) -> dict[str, str]:
-    return best_ordered_assignment(param_names, _all_valid_strings(context, model), context, model)
+    candidates, preferred = _all_valid_strings(original_prompt)
+    return best_ordered_assignment(param_names, candidates, context, model, preferred=preferred)
 
 
 def _extract_regex_params(context: list[int], model: Small_LLM_Model) -> str:
     """Infer a regex pattern from key_extract_number_paramsords in the prompt."""
-    text = model.decode(context).lower()
-    if "numbers" in text or "digits" in text:
-        return r'\d+'
-    if "vowels" in text:
-        return r'[aeiou]'
-    return r'.*'
+    return "placeholder"
 
 
 def extract_parameters(
@@ -42,7 +42,9 @@ def extract_parameters(
 ) -> dict:
     """Dispatcher: extract all parameters for function by type."""
     context = input_ids[:]
-    string_candidates = [word for word in original_prompt.split() if not _is_number(word)]
+
+    string_param_names = [n for n, p in function.parameters.items() if p.type.lower() == 'string']
+    string_values = _extract_string_params(original_prompt, string_param_names, context, model)
 
     number_param_names = [n for n, p in function.parameters.items() if p.type.lower() == 'number']
     number_values = _extract_number_params(original_prompt, number_param_names, context, model)
@@ -54,9 +56,10 @@ def extract_parameters(
         elif pdef.type.lower() == 'string' and arg_name.lower() == 'regex':
             value = _extract_regex_params(context, model)
         else:
-            value = _extract_string_params(context, string_candidates, model)
+            value = string_values[arg_name]
 
         params[arg_name] = value
-        context.extend(_encode_ids(f'"{arg_name}": {value}, ', model))
+        if value != "":
+            context.extend(_encode_ids(f"\"{arg_name}\": {value}, ", model))
 
     return params
