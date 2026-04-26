@@ -38,65 +38,52 @@ def _all_valid_numbers(original_prompt: str) -> list[str]:
     return results
 
 
-# instruction/meta words (not data values)
-STOP = {
-    "is","the","a","an","and","or","to","of","in","on","with","from",
-    "replace","substitute","reverse","greet","string","word","all","every",
-    "calculate","this","exact","exactly","please","remove","join","concatenate",
-    "prefix","occurrence","occurrences","substring","substrings",
-    "source","target","replacement","first","second","separator","name","s"
-}
-
-
-def _good_candidate(s: str) -> bool:
-    t = s.strip()
-    if not t:
-        return False
-    if t.lower() in STOP:
-        return False
-    if "=" in t:
-        return False
-    # allow 1-char separators commonly used in string functions
-    if len(t) < 2 and t not in {"*", "-", "/", "_"}:
-        return False
-    return True
-
-
 def _all_valid_strings(original_prompt: str) -> tuple[list[str], set[str]]:
     """
-    General candidate extractor:
-    - quoted strings (preferred)
-    - explicit key="value" captures (also preferred for value)
-    - cleaned fallback tokens
+    Returns:
+      out: candidates where
+        - quoted chunks are kept as ONE item
+        - remaining non-quoted text is split by spaces
+        - dedupe is CASE-SENSITIVE (so 'numbers' and 'NUMBERS' can both exist)
+      preferred: set of quoted chunks (higher priority)
+    Example:
+      input:  say 'hello world' with NUMBERS
+      out:    ['hello world', 'say', 'with', 'NUMBERS']
+      pref:   {'hello world'}
     """
-    # quoted substrings
-    quoted = re.findall(r"""["'](.+?)["']""", original_prompt)
+    import re
+
+    text = original_prompt or ""
+
+    # 1) capture quoted chunks as atomic values
+    quoted: list[str] = []
+    for m in re.finditer(r'"([^"]+)"|\'([^\']+)\'', text):
+        q = m.group(1) if m.group(1) is not None else m.group(2)
+        q = q.strip()
+        if q:
+            quoted.append(q)
+
     preferred = set(quoted)
 
-    # key="value" / key='value' pairs -> prioritize extracted value text
-    kv_values = [v for _, v in re.findall(r"""(\w+)\s*=\s*["'](.*?)["']""", original_prompt)]
-    preferred.update(kv_values)
+    # 2) remove quoted segments from text so we don't split them into words
+    text_wo_quotes = re.sub(r'"[^"]+"|\'[^\']+\'', " ", text)
 
-    # fallback tokens
-    words = [w.strip("'\".,!?()[]{}") for w in original_prompt.split()]
-    words = [w for w in words if w and not _is_number(w)]
+    # 3) split remaining text by spaces and clean edge punctuation
+    raw_words = text_wo_quotes.split()
+    words: list[str] = []
+    for w in raw_words:
+        w2 = w.strip("'\".,!?()[]{}:;")
+        if w2:
+            words.append(w2)
 
-    candidates: list[str] = []
-    candidates.extend(kv_values)
-    candidates.extend(quoted)
-    candidates.extend(words)
-
-    # dedupe + filter
-    seen = set()
+    # 4) compose output: quoted first, then words; dedupe CASE-SENSITIVE
     out: list[str] = []
-    for c in candidates:
-        c = c.strip()
-        if not _good_candidate(c):
+    seen: set[str] = set()
+
+    for c in quoted + words:
+        if c in seen:
             continue
-        key = c.lower()
-        if key in seen:
-            continue
-        seen.add(key)
+        seen.add(c)
         out.append(c)
 
     return out, preferred
@@ -115,75 +102,42 @@ def score_candidate(prefix_ids: list[int], candidate_tokens: list[int], model: S
     return total_logprob
 
 
-def best_ordered_assignment(
+def best_numeric_order(
     param_names: list[str],
     candidates: list[str],
     context: list[int],
-    model: Small_LLM_Model,
-    preferred: set[str] | None = None,
-    quote_bonus: float = 2.0,
-    max_candidates: int = 30,
-    topk_per_param: int = 7,
+    model: Small_LLM_Model
 ) -> dict[str, str]:
-    if not candidates or not param_names:
-        return {name: "" for name in param_names}
-
-    # defensive filter + cap
-    candidates = [c for c in candidates if _good_candidate(c)]
+    # empty cases
+    if not param_names:
+        return {}
     if not candidates:
-        return {name: "" for name in param_names}
-    candidates = candidates[:max_candidates]
+        return {p: "" for p in param_names}
 
-    # prefix contexts
-    prefix_by_name: dict[str, list[int]] = {}
-    for name in param_names:
-        prefix = context[:]
-        prefix.extend(_encode_ids(f"\"{name}\": ", model))
-        prefix_by_name[name] = prefix
+    # use only as many candidates as needed
+    top_k = min(len(param_names), len(candidates))
 
-    # pairwise scores
-    pair_scores: dict[str, dict[str, float]] = {name: {} for name in param_names}
-    for name in param_names:
-        prefix_ids = prefix_by_name[name]
-        for cand in candidates:
-            s = score_candidate(prefix_ids, _encode_ids(cand, model), model)
+    best_score = float("-inf")
+    best_params = {p: "" for p in param_names}
 
-            # bonus for explicitly quoted/pair-extracted values
-            if preferred and cand in preferred:
-                s += quote_bonus
+    # try every ordering of top_k numbers
+    for cand_perm in permutations(candidates, top_k):
+        score = 0.0
+        temp_params = {p: "" for p in param_names}
+        running_context = context[:]
 
-            # mild specificity bonus to avoid generic one-word glue terms
-            s += 0.08 * len(cand)
+        for i, p in enumerate(param_names[:top_k]):
+            c = cand_perm[i]
+            temp_params[p] = c
 
-            pair_scores[name][cand] = s
+            tokens = _encode_ids(c, model)
+            if tokens:
+                score += score_candidate(running_context, tokens, model)
 
-    # top-k prune per param
-    top_by_name: dict[str, list[str]] = {}
-    for name in param_names:
-        ranked = sorted(candidates, key=lambda c: pair_scores[name][c], reverse=True)
-        top_by_name[name] = ranked[:topk_per_param]
+            running_context.extend(_encode_ids(f"\"{p}\": {c}, ", model))
 
-    # pool for permutation search
-    pool = list({c for vals in top_by_name.values() for c in vals})
-    if len(pool) < len(param_names):
-        return {name: "" for name in param_names}
+        if score > best_score:
+            best_score = score
+            best_params = temp_params
 
-    # global optimal assignment (not greedy)
-    best_total = float("-inf")
-    best_map: dict[str, str] | None = None
-
-    for perm in permutations(pool, r=len(param_names)):
-        total = 0.0
-        valid = True
-        for name, cand in zip(param_names, perm):
-            if cand not in top_by_name[name]:
-                valid = False
-                break
-            total += pair_scores[name][cand]
-        if valid and total > best_total:
-            best_total = total
-            best_map = dict(zip(param_names, perm))
-
-    if best_map is None:
-        return {name: "" for name in param_names}
-    return best_map
+    return best_params
