@@ -14,3 +14,6 @@ if [ -d "$HOME/.cache/uv" ] || [ -d "$HOME/.cache/huggingface" ]; then
 fi
 
 uv run python3 -m src
+git add .
+git commit -m "Finished 89%"
+git push

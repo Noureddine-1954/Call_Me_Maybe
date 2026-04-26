@@ -6,6 +6,7 @@ dependencies = [
   "numpy",
   "pydantic",
   "llm-sdk",
+  "spacy",
 ]
 
 [tool.uv.sources]

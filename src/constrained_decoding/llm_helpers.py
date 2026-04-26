@@ -38,24 +38,11 @@ def _all_valid_numbers(original_prompt: str) -> list[str]:
     return results
 
 
-def _all_valid_strings(original_prompt: str) -> tuple[list[str], set[str]]:
-    """
-    Returns:
-      out: candidates where
-        - quoted chunks are kept as ONE item
-        - remaining non-quoted text is split by spaces
-        - dedupe is CASE-SENSITIVE (so 'numbers' and 'NUMBERS' can both exist)
-      preferred: set of quoted chunks (higher priority)
-    Example:
-      input:  say 'hello world' with NUMBERS
-      out:    ['hello world', 'say', 'with', 'NUMBERS']
-      pref:   {'hello world'}
-    """
-    import re
+def _all_valid_strings(original_prompt: str, functions: list) -> tuple[list[str], set[str]]:
+    _NUM_RE = re.compile(r"^[+-]?\d*\.?\d+(?:[eE][+-]?\d+)?$")
 
     text = original_prompt or ""
 
-    # 1) capture quoted chunks as atomic values
     quoted: list[str] = []
     for m in re.finditer(r'"([^"]+)"|\'([^\']+)\'', text):
         q = m.group(1) if m.group(1) is not None else m.group(2)
@@ -65,23 +52,37 @@ def _all_valid_strings(original_prompt: str) -> tuple[list[str], set[str]]:
 
     preferred = set(quoted)
 
-    # 2) remove quoted segments from text so we don't split them into words
     text_wo_quotes = re.sub(r'"[^"]+"|\'[^\']+\'', " ", text)
-
-    # 3) split remaining text by spaces and clean edge punctuation
     raw_words = text_wo_quotes.split()
+
     words: list[str] = []
     for w in raw_words:
         w2 = w.strip("'\".,!?()[]{}:;")
         if w2:
             words.append(w2)
 
-    # 4) compose output: quoted first, then words; dedupe CASE-SENSITIVE
+    # build unlikely from parameter descriptions
+    unlikely: set[str] = set()
+    for fn in (functions or []):
+        params = getattr(fn, "parameters", None) or {}
+        for p in params.values():
+            desc = getattr(p, "description", None)
+            if isinstance(desc, str):
+                unlikely.add(desc.strip().lower())
+                for tok in re.findall(r"[A-Za-z][A-Za-z0-9_\-]*", desc.lower()):
+                    unlikely.add(tok)
+
     out: list[str] = []
     seen: set[str] = set()
+    unlikely_lc = {u.lower() for u in unlikely}
 
     for c in quoted + words:
-        if c in seen:
+        c = c.strip()
+        if not c or c in seen:
+            continue
+        if _NUM_RE.fullmatch(c):
+            continue
+        if c.lower() in unlikely_lc:
             continue
         seen.add(c)
         out.append(c)

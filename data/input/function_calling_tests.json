@@ -31,5 +31,62 @@
   },
   {
     "prompt": "Substitute the word 'cat' with 'dog' in 'The cat sat on the mat with another cat'"
+  },
+  {
+    "prompt": "Add -5 and 12"
+  },
+  {
+    "prompt": "Sum 3.5 and 2.25"
+  },
+  {
+    "prompt": "Could you add 1e2 and 50?"
+  },
+  {
+    "prompt": "sqrt of 2.25"
+  },
+  {
+    "prompt": "Find square root for 1e4"
+  },
+  {
+    "prompt": "Give me the square root of 0"
+  },
+  {
+    "prompt": "Please greet Alice"
+  },
+  {
+    "prompt": "Can you greet 'Neo'?"
+  },
+  {
+    "prompt": "Say hello to Omar"
+  },
+  {
+    "prompt": "Reverse 'OpenAI'"
+  },
+  {
+    "prompt": "Please reverse \"Python 3.11\""
+  },
+  {
+    "prompt": "Flip this text: racecar"
+  },
+  {
+    "prompt": "Replace digits in 'Order #A12-B34' with X"
+  },
+  {
+    "prompt": "Replace whitespace in \"a   b\\tc\" with _"
+  },
+  {
+    "prompt": "Replace all words in 'one two three' with token"
+  },
+  {
+    "prompt": "Use regex '[A-Z]+' in 'ABC def GHI' with lower"
+  },
+  {
+    "prompt": "Pattern is '[0-9]{2}', replace in 'ab12cd34' with ##"
+  },
+  {
+    "prompt": "Replace all spaces in 'a b  c' with dash"
+  },
+  {
+    "prompt": "Substitute 'x' with nothing in 'xoxo'"
   }
 ]
