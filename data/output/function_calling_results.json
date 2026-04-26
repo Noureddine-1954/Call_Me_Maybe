@@ -1,0 +1,851 @@
+[
+  {
+    "prompt": "Add 14 and 29",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 14.0,
+      "b": 29.0
+    }
+  },
+  {
+    "prompt": "What is the sum of 0 and 0?",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 0.0,
+      "b": 0.0
+    }
+  },
+  {
+    "prompt": "Please add -12 and 7",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": -12.0,
+      "b": 7.0
+    }
+  },
+  {
+    "prompt": "Sum 3.1415 and 2.7182",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 3.1415,
+      "b": 2.7182
+    }
+  },
+  {
+    "prompt": "Could you add 1e3 and 2e2?",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 1000.0,
+      "b": 200.0
+    }
+  },
+  {
+    "prompt": "Add +5 and -5",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": -5.0,
+      "b": 5.0
+    }
+  },
+  {
+    "prompt": "What do you get if you add 999999 and 1?",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 999999.0,
+      "b": 1.0
+    }
+  },
+  {
+    "prompt": "Add 6.02e23 and 1",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 1.0,
+      "b": 6.02e+23
+    }
+  },
+  {
+    "prompt": "sum of -0.5 and -0.25",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": -0.5,
+      "b": -0.25
+    }
+  },
+  {
+    "prompt": "Add 42 and 0042",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 42.0,
+      "b": 42.0
+    }
+  },
+  {
+    "prompt": "Square root of 81",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 81.0
+    }
+  },
+  {
+    "prompt": "What is the square root of 2?",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 2.0
+    }
+  },
+  {
+    "prompt": "sqrt 0.0004",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 0.0004
+    }
+  },
+  {
+    "prompt": "Find the square root for 1e-4",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 0.0001
+    }
+  },
+  {
+    "prompt": "Calculate square root of 99980001",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 99980001.0
+    }
+  },
+  {
+    "prompt": "square root of 2.25 please",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 2.25
+    }
+  },
+  {
+    "prompt": "Could you compute sqrt(144)?",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 144.0
+    }
+  },
+  {
+    "prompt": "Find sqrt of 12321",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 12321.0
+    }
+  },
+  {
+    "prompt": "What is √49?",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 49.0
+    }
+  },
+  {
+    "prompt": "Give me the square root of 0",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 0.0
+    }
+  },
+  {
+    "prompt": "Greet Alice",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "Alice"
+    }
+  },
+  {
+    "prompt": "Please greet bob",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "bob"
+    }
+  },
+  {
+    "prompt": "Say hi to CHARLIE",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "CHARLIE"
+    }
+  },
+  {
+    "prompt": "Can you greet 'Dora'",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "Dora"
+    }
+  },
+  {
+    "prompt": "Greet Jean-Luc",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "Jean-Luc"
+    }
+  },
+  {
+    "prompt": "Greet O'Connor",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "O'Connor"
+    }
+  },
+  {
+    "prompt": "Please generate a greeting for María",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "María"
+    }
+  },
+  {
+    "prompt": "Greet 李雷",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "李雷"
+    }
+  },
+  {
+    "prompt": "Say hello to Dr. Smith",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "Smith"
+    }
+  },
+  {
+    "prompt": "Could you greet 007",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "you"
+    }
+  },
+  {
+    "prompt": "Reverse 'stressed'",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "stressed"
+    }
+  },
+  {
+    "prompt": "Reverse the string \"Able was I ere I saw Elba\"",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "Able was I ere I saw Elba"
+    }
+  },
+  {
+    "prompt": "Please reverse: OpenAI_2026",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "OpenAI_2026"
+    }
+  },
+  {
+    "prompt": "Reverse string ''",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "string"
+    }
+  },
+  {
+    "prompt": "Reverse \"  leading and trailing  \"",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "leading and trailing"
+    }
+  },
+  {
+    "prompt": "Flip this text: racecar",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "racecar"
+    }
+  },
+  {
+    "prompt": "Reverse the string \"line1\\nline2\"",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "line1\\nline2"
+    }
+  },
+  {
+    "prompt": "Reverse '😀😃😄😁'",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "😀😃😄😁"
+    }
+  },
+  {
+    "prompt": "Could you reverse \"a,b;c!\"",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "a,b;c!"
+    }
+  },
+  {
+    "prompt": "Reverse the text 'mañana'",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "mañana"
+    }
+  },
+  {
+    "prompt": "Replace all numbers in \"Room 12, floor 7, code 9001\" with NUM",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "Room 12, floor 7, code 9001",
+      "regex": "\\d+",
+      "replacement": "NUM"
+    }
+  },
+  {
+    "prompt": "Replace digits in 'A1B2C3' with X",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "A1B2C3",
+      "regex": "\\d+",
+      "replacement": "X"
+    }
+  },
+  {
+    "prompt": "Replace all vowels in 'Programming is fun' with asterisks",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "Programming is fun",
+      "regex": "[AEIOUaeiou]",
+      "replacement": "*"
+    }
+  },
+  {
+    "prompt": "Replace vowels in \"AEIOU and sometimes y\" with _",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "AEIOU and sometimes y",
+      "regex": "[AEIOUaeiou]",
+      "replacement": "_"
+    }
+  },
+  {
+    "prompt": "Substitute the word 'cat' with 'dog' in 'cat scat concatenate cat'",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "cat scat concatenate cat",
+      "regex": "cat",
+      "replacement": "dog"
+    }
+  },
+  {
+    "prompt": "Replace all spaces in 'a b   c' with dash",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "a b   c",
+      "regex": "\\s+",
+      "replacement": "-"
+    }
+  },
+  {
+    "prompt": "Replace whitespace in \"a\\tb\\nc\" with SPACE",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "a\\tb\\nc",
+      "regex": "\\s+",
+      "replacement": " "
+    }
+  },
+  {
+    "prompt": "Replace all words in 'one two three' with token",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "one two three",
+      "regex": "\\w+",
+      "replacement": "token"
+    }
+  },
+  {
+    "prompt": "Use regex '[A-Z]+' in 'ABC def GHI' with lower",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "lower",
+      "regex": "[A-Z]+",
+      "replacement": "ABC def GHI"
+    }
+  },
+  {
+    "prompt": "Pattern is '[0-9]{2}', replace in 'ab12cd34' with ##",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "##",
+      "regex": "[0-9]{2}",
+      "replacement": "ab12cd34"
+    }
+  },
+  {
+    "prompt": "Replace regex '\\b[a-z]{3}\\b' in 'one two three four' with XXX",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "XXX",
+      "regex": "\\b[a-z]{3}\\b",
+      "replacement": "one two three four"
+    }
+  },
+  {
+    "prompt": "Replace pattern '[aeiou]' in 'beautiful day' with *",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "*",
+      "regex": "[aeiou]",
+      "replacement": "beautiful day"
+    }
+  },
+  {
+    "prompt": "Substitute 'x' with nothing in 'xoxo'",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "xoxo",
+      "regex": "x",
+      "replacement": ""
+    }
+  },
+  {
+    "prompt": "Replace all numbers in 'no digits here' with NUM",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "no digits here",
+      "regex": "\\d+",
+      "replacement": "NUM"
+    }
+  },
+  {
+    "prompt": "Replace word 'na' with 'NA' in 'banana bandana'",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "banana bandana",
+      "regex": "na",
+      "replacement": "NA"
+    }
+  },
+  {
+    "prompt": "Replace all vowels in 'rhythm myths' with *",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "rhythm myths",
+      "regex": "[AEIOUaeiou]",
+      "replacement": "*"
+    }
+  },
+  {
+    "prompt": "Replace all words in '' with token",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "words",
+      "regex": "\\w+",
+      "replacement": "token"
+    }
+  },
+  {
+    "prompt": "Replace whitespace in '   ' with _",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "   ",
+      "regex": "\\s+",
+      "replacement": "_"
+    }
+  },
+  {
+    "prompt": "Replace pattern '^\\d+$' in '12345' with NUMBER",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "in",
+      "regex": "^\\d+$",
+      "replacement": "NUMBER"
+    }
+  },
+  {
+    "prompt": "Use pattern '(?i)cat' in 'Cat cAt caT dog' with pet",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "pet",
+      "regex": "(?i)cat",
+      "replacement": "Cat cAt caT dog"
+    }
+  },
+  {
+    "prompt": "Please add 1 and 2 and then greet John",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 1.0,
+      "b": 2.0
+    }
+  },
+  {
+    "prompt": "Reverse 'hello' and replace vowels in it with *",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "hello"
+    }
+  },
+  {
+    "prompt": "What is the sum of \"5\" and \"7\"?",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 5.0,
+      "b": 7.0
+    }
+  },
+  {
+    "prompt": "Greet \"John Doe\"",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "John Doe"
+    }
+  },
+  {
+    "prompt": "Reverse the string 12345",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "the"
+    }
+  },
+  {
+    "prompt": "Square root of -9",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": -9.0
+    }
+  },
+  {
+    "prompt": "Add NaN and 5",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 5.0,
+      "b": 0.0
+    }
+  },
+  {
+    "prompt": "Replace all numbers in \"Version2Beta3\" with ''",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "numbers",
+      "regex": "\\d+",
+      "replacement": "Version2Beta3"
+    }
+  },
+  {
+    "prompt": "Substitute word \"\" with \"x\" in \"abc\"",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "in",
+      "regex": " with ",
+      "replacement": "with"
+    }
+  },
+  {
+    "prompt": "Use regex '[' in 'abc' with x",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "Use",
+      "regex": "[",
+      "replacement": "abc"
+    }
+  },
+  {
+    "prompt": "Replace all spaces in \"tab\\tspace \" with underscore",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "tab\\tspace ",
+      "regex": "\\s+",
+      "replacement": "_"
+    }
+  },
+  {
+    "prompt": "Greet   ",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "Greet"
+    }
+  },
+  {
+    "prompt": "Reverse",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "Reverse"
+    }
+  },
+  {
+    "prompt": "Add",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 0.0,
+      "b": 0.0
+    }
+  },
+  {
+    "prompt": "sqrt",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 0.0
+    }
+  },
+  {
+    "prompt": "Replace with in",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "in",
+      "regex": ".+",
+      "replacement": "in"
+    }
+  },
+  {
+    "prompt": "Replace all vowels in 'AEIOUaeiou' with star",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "AEIOUaeiou",
+      "regex": "[AEIOUaeiou]",
+      "replacement": "*"
+    }
+  },
+  {
+    "prompt": "Replace all vowels in 'áéíóú AEIOU' with *",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "áéíóú AEIOU",
+      "regex": "[AEIOUaeiou]",
+      "replacement": "*"
+    }
+  },
+  {
+    "prompt": "Replace digits in '١٢٣abc٤٥' with D",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "١٢٣abc٤٥",
+      "regex": "\\d+",
+      "replacement": "D"
+    }
+  },
+  {
+    "prompt": "Use regex '\\p{L}+' in 'abc' with letters",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "letters",
+      "regex": "\\p{L}+",
+      "replacement": "abc"
+    }
+  },
+  {
+    "prompt": "Pattern: '(?:foo|bar)+' in 'foobarbar' with X",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "X",
+      "regex": "(?:foo|bar)+",
+      "replacement": "foobarbar"
+    }
+  },
+  {
+    "prompt": "Replace regex '(\\d{2})/(\\d{2})/(\\d{4})' in '01/31/2026' with DATE",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "DATE",
+      "regex": "(\\d{2})/(\\d{2})/(\\d{4})",
+      "replacement": "01/31/2026"
+    }
+  },
+  {
+    "prompt": "Replace regex '(?<=#)\\w+' in '#tag1 #tag2' with TAG",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "TAG",
+      "regex": "(?<=#)\\w+",
+      "replacement": "#tag1 #tag2"
+    }
+  },
+  {
+    "prompt": "Replace regex '\\b\\w{1,2}\\b' in 'a bb ccc dd' with _",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "_",
+      "regex": "\\b\\w{1,2}\\b",
+      "replacement": "a bb ccc dd"
+    }
+  },
+  {
+    "prompt": "Substitute the word 'end.' with 'FIN' in 'end. friend end.'",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "end. friend end.",
+      "regex": "end\\.",
+      "replacement": "FIN"
+    }
+  },
+  {
+    "prompt": "Replace all numbers in '3.14 and -42 and +7e3' with N",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "3.14 and -42 and +7e3",
+      "regex": "\\d+",
+      "replacement": "N"
+    }
+  },
+  {
+    "prompt": "Replace all words in 'snake_case camelCase kebab-case' with W",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "snake_case camelCase kebab-case",
+      "regex": "\\w+",
+      "replacement": "W"
+    }
+  },
+  {
+    "prompt": "Use regex '\\s+' in 'a\\u00A0b c' with _",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "_",
+      "regex": "\\s+",
+      "replacement": "a\\u00A0b c"
+    }
+  },
+  {
+    "prompt": "Pattern is 'cat|dog', replace in 'catdog dogcat' with pet",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "pet",
+      "regex": "cat|dog",
+      "replacement": "catdog dogcat"
+    }
+  },
+  {
+    "prompt": "Replace pattern '(?m)^ERROR:.*$' in 'INFO ok\\nERROR: bad\\nINFO done' with ''",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "in",
+      "regex": "(?m)^ERROR:.*$",
+      "replacement": "INFO ok\\nERROR: bad\\nINFO done"
+    }
+  },
+  {
+    "prompt": "Replace regex '(.)\\1+' in 'coooool wooow' with $1",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "$1",
+      "regex": "(.)\\1+",
+      "replacement": "coooool wooow"
+    }
+  },
+  {
+    "prompt": "Substitute the word 'C++' with 'CPP' in 'I like C++ and C++17'",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "I like C++ and C++17",
+      "regex": "C\\+\\+",
+      "replacement": "CPP"
+    }
+  },
+  {
+    "prompt": "Replace word '.' with 'DOT' in 'a.b.c'",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "a.b.c",
+      "regex": "\\.",
+      "replacement": "DOT"
+    }
+  },
+  {
+    "prompt": "Use regex '\\\\d+' in 'literal \\d+ text 123' with NUM",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "Use",
+      "regex": "\\\\d+",
+      "replacement": "literal \\d+ text 123"
+    }
+  },
+  {
+    "prompt": "Pattern is '(?s)<tag>.*?</tag>', replace in '<tag>a\\n b</tag>' with TAG",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "TAG",
+      "regex": "(?s)<tag>.*?</tag>",
+      "replacement": "<tag>a\\n b</tag>"
+    }
+  },
+  {
+    "prompt": "Replace all spaces in 'mix of\\ttabs and spaces' with _",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "mix of\\ttabs and spaces",
+      "regex": "\\s+",
+      "replacement": "_"
+    }
+  },
+  {
+    "prompt": "Replace whitespace in 'line1\\r\\nline2' with |",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "line1\\r\\nline2",
+      "regex": "\\s+",
+      "replacement": "|"
+    }
+  },
+  {
+    "prompt": "Replace all numbers in '0001 002 03' with N",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "0001 002 03",
+      "regex": "\\d+",
+      "replacement": "N"
+    }
+  },
+  {
+    "prompt": "Add 00012 and 0003",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 3.0,
+      "b": 12.0
+    }
+  },
+  {
+    "prompt": "What is the sum of -1e-3 and 2e-3?",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": -0.001,
+      "b": 0.002
+    }
+  },
+  {
+    "prompt": "Find square root for 1e308",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 1e+308
+    }
+  },
+  {
+    "prompt": "Reverse the string \"👨‍👩‍👧‍👦 family\"",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "👨‍👩‍👧‍👦 family"
+    }
+  },
+  {
+    "prompt": "Greet \" السيد أحمد \"",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "السيد أحمد"
+    }
+  },
+  {
+    "prompt": "Substitute the word '  cat  ' with 'dog' in '  cat    cat  '",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "  cat    cat  ",
+      "regex": "\\ \\ cat\\ \\ ",
+      "replacement": "dog"
+    }
+  },
+  {
+    "prompt": "Use regex '(?i)\\b[a-f0-9]{8}\\b' in 'deadBEEF 1234abcd xyz' with HEX",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "HEX",
+      "regex": "(?i)\\b[a-f0-9]{8}\\b",
+      "replacement": "deadBEEF 1234abcd xyz"
+    }
+  }
+]

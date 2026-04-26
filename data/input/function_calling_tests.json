@@ -1,92 +1,107 @@
 [
-  {
-    "prompt": "What is the sum of 2 and 3?"
-  },
-  {
-    "prompt": "What is the sum of 265 and 345?"
-  },
-  {
-    "prompt": "Greet shrek"
-  },
-  {
-    "prompt": "Greet john"
-  },
-  {
-    "prompt": "Reverse the string 'hello'"
-  },
-  {
-    "prompt": "Reverse the string 'world'"
-  },
-  {
-    "prompt": "What is the square root of 16?"
-  },
-  {
-    "prompt": "Calculate the square root of 144"
-  },
-  {
-    "prompt": "Replace all numbers in \"Hello 34 I'm 233 years old\" with NUMBERS"
-  },
-  {
-    "prompt": "Replace all vowels in 'Programming is fun' with asterisks"
-  },
-  {
-    "prompt": "Substitute the word 'cat' with 'dog' in 'The cat sat on the mat with another cat'"
-  },
-  {
-    "prompt": "Add -5 and 12"
-  },
-  {
-    "prompt": "Sum 3.5 and 2.25"
-  },
-  {
-    "prompt": "Could you add 1e2 and 50?"
-  },
-  {
-    "prompt": "sqrt of 2.25"
-  },
-  {
-    "prompt": "Find square root for 1e4"
-  },
-  {
-    "prompt": "Give me the square root of 0"
-  },
-  {
-    "prompt": "Please greet Alice"
-  },
-  {
-    "prompt": "Can you greet 'Neo'?"
-  },
-  {
-    "prompt": "Say hello to Omar"
-  },
-  {
-    "prompt": "Reverse 'OpenAI'"
-  },
-  {
-    "prompt": "Please reverse \"Python 3.11\""
-  },
-  {
-    "prompt": "Flip this text: racecar"
-  },
-  {
-    "prompt": "Replace digits in 'Order #A12-B34' with X"
-  },
-  {
-    "prompt": "Replace whitespace in \"a   b\\tc\" with _"
-  },
-  {
-    "prompt": "Replace all words in 'one two three' with token"
-  },
-  {
-    "prompt": "Use regex '[A-Z]+' in 'ABC def GHI' with lower"
-  },
-  {
-    "prompt": "Pattern is '[0-9]{2}', replace in 'ab12cd34' with ##"
-  },
-  {
-    "prompt": "Replace all spaces in 'a b  c' with dash"
-  },
-  {
-    "prompt": "Substitute 'x' with nothing in 'xoxo'"
-  }
+  {"prompt":"Add 14 and 29"},
+  {"prompt":"What is the sum of 0 and 0?"},
+  {"prompt":"Please add -12 and 7"},
+  {"prompt":"Sum 3.1415 and 2.7182"},
+  {"prompt":"Could you add 1e3 and 2e2?"},
+  {"prompt":"Add +5 and -5"},
+  {"prompt":"What do you get if you add 999999 and 1?"},
+  {"prompt":"Add 6.02e23 and 1"},
+  {"prompt":"sum of -0.5 and -0.25"},
+  {"prompt":"Add 42 and 0042"},
+  {"prompt":"Square root of 81"},
+  {"prompt":"What is the square root of 2?"},
+  {"prompt":"sqrt 0.0004"},
+  {"prompt":"Find the square root for 1e-4"},
+  {"prompt":"Calculate square root of 99980001"},
+  {"prompt":"square root of 2.25 please"},
+  {"prompt":"Could you compute sqrt(144)?"},
+  {"prompt":"Find sqrt of 12321"},
+  {"prompt":"What is √49?"},
+  {"prompt":"Give me the square root of 0"},
+  {"prompt":"Greet Alice"},
+  {"prompt":"Please greet bob"},
+  {"prompt":"Say hi to CHARLIE"},
+  {"prompt":"Can you greet 'Dora'"},
+  {"prompt":"Greet Jean-Luc"},
+  {"prompt":"Greet O'Connor"},
+  {"prompt":"Please generate a greeting for María"},
+  {"prompt":"Greet 李雷"},
+  {"prompt":"Say hello to Dr. Smith"},
+  {"prompt":"Could you greet 007"},
+  {"prompt":"Reverse 'stressed'"},
+  {"prompt":"Reverse the string \"Able was I ere I saw Elba\""},
+  {"prompt":"Please reverse: OpenAI_2026"},
+  {"prompt":"Reverse string ''"},
+  {"prompt":"Reverse \"  leading and trailing  \""},
+  {"prompt":"Flip this text: racecar"},
+  {"prompt":"Reverse the string \"line1\\nline2\""},
+  {"prompt":"Reverse '😀😃😄😁'"},
+  {"prompt":"Could you reverse \"a,b;c!\""},
+  {"prompt":"Reverse the text 'mañana'"},
+  {"prompt":"Replace all numbers in \"Room 12, floor 7, code 9001\" with NUM"},
+  {"prompt":"Replace digits in 'A1B2C3' with X"},
+  {"prompt":"Replace all vowels in 'Programming is fun' with asterisks"},
+  {"prompt":"Replace vowels in \"AEIOU and sometimes y\" with _"},
+  {"prompt":"Substitute the word 'cat' with 'dog' in 'cat scat concatenate cat'"},
+  {"prompt":"Replace all spaces in 'a b   c' with dash"},
+  {"prompt":"Replace whitespace in \"a\\tb\\nc\" with SPACE"},
+  {"prompt":"Replace all words in 'one two three' with token"},
+  {"prompt":"Use regex '[A-Z]+' in 'ABC def GHI' with lower"},
+  {"prompt":"Pattern is '[0-9]{2}', replace in 'ab12cd34' with ##"},
+  {"prompt":"Replace regex '\\b[a-z]{3}\\b' in 'one two three four' with XXX"},
+  {"prompt":"Replace pattern '[aeiou]' in 'beautiful day' with *"},
+  {"prompt":"Substitute 'x' with nothing in 'xoxo'"},
+  {"prompt":"Replace all numbers in 'no digits here' with NUM"},
+  {"prompt":"Replace word 'na' with 'NA' in 'banana bandana'"},
+  {"prompt":"Replace all vowels in 'rhythm myths' with *"},
+  {"prompt":"Replace all words in '' with token"},
+  {"prompt":"Replace whitespace in '   ' with _"},
+  {"prompt":"Replace pattern '^\\d+$' in '12345' with NUMBER"},
+  {"prompt":"Use pattern '(?i)cat' in 'Cat cAt caT dog' with pet"},
+  {"prompt":"Please add 1 and 2 and then greet John"},
+  {"prompt":"Reverse 'hello' and replace vowels in it with *"},
+  {"prompt":"What is the sum of \"5\" and \"7\"?"},
+  {"prompt":"Greet \"John Doe\""},
+  {"prompt":"Reverse the string 12345"},
+  {"prompt":"Square root of -9"},
+  {"prompt":"Add NaN and 5"},
+  {"prompt":"Replace all numbers in \"Version2Beta3\" with ''"},
+  {"prompt":"Substitute word \"\" with \"x\" in \"abc\""},
+  {"prompt":"Use regex '[' in 'abc' with x"},
+  {"prompt":"Replace all spaces in \"tab\\tspace \" with underscore"},
+  {"prompt":"Greet   "},
+  {"prompt":"Reverse"},
+  {"prompt":"Add"},
+  {"prompt":"sqrt"},
+  {"prompt":"Replace with in"},
+  {"prompt":"Replace all vowels in 'AEIOUaeiou' with star"},
+  {"prompt":"Replace all vowels in 'áéíóú AEIOU' with *"},
+  {"prompt":"Replace digits in '١٢٣abc٤٥' with D"},
+  {"prompt":"Use regex '\\p{L}+' in 'abc' with letters"},
+  {"prompt":"Pattern: '(?:foo|bar)+' in 'foobarbar' with X"},
+  {"prompt":"Replace regex '(\\d{2})/(\\d{2})/(\\d{4})' in '01/31/2026' with DATE"},
+  {"prompt":"Replace regex '(?<=#)\\w+' in '#tag1 #tag2' with TAG"},
+  {"prompt":"Replace regex '\\b\\w{1,2}\\b' in 'a bb ccc dd' with _"},
+  {"prompt":"Substitute the word 'end.' with 'FIN' in 'end. friend end.'"},
+  {"prompt":"Replace all numbers in '3.14 and -42 and +7e3' with N"},
+  {"prompt":"Replace all words in 'snake_case camelCase kebab-case' with W"},
+  {"prompt":"Use regex '\\s+' in 'a\\u00A0b c' with _"},
+  {"prompt":"Pattern is 'cat|dog', replace in 'catdog dogcat' with pet"},
+  {"prompt":"Replace pattern '(?m)^ERROR:.*$' in 'INFO ok\\nERROR: bad\\nINFO done' with ''"},
+  {"prompt":"Replace regex '(.)\\1+' in 'coooool wooow' with $1"},
+  {"prompt":"Substitute the word 'C++' with 'CPP' in 'I like C++ and C++17'"},
+  {"prompt":"Replace word '.' with 'DOT' in 'a.b.c'"},
+  {"prompt":"Use regex '\\\\d+' in 'literal \\d+ text 123' with NUM"},
+  {"prompt":"Pattern is '(?s)<tag>.*?</tag>', replace in '<tag>a\\n b</tag>' with TAG"},
+  {"prompt":"Replace all spaces in 'mix of\\ttabs and spaces' with _"},
+  {"prompt":"Replace whitespace in 'line1\\r\\nline2' with |"},
+  {"prompt":"Replace all numbers in '0001 002 03' with N"},
+  {"prompt":"Add 00012 and 0003"},
+  {"prompt":"What is the sum of -1e-3 and 2e-3?"},
+  {"prompt":"Find square root for 1e308"},
+  {"prompt":"Reverse the string \"👨‍👩‍👧‍👦 family\""},
+  {"prompt":"Greet \" السيد أحمد \""},
+  {"prompt":"Substitute the word '  cat  ' with 'dog' in '  cat    cat  '"},
+  {"prompt":"Use regex '(?i)\\b[a-f0-9]{8}\\b' in 'deadBEEF 1234abcd xyz' with HEX"}
 ]

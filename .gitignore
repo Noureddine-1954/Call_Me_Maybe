@@ -1,9 +1,9 @@
 # This ignores all hidden files excluding .gitignore itself
 
-/data/output/
-.*
-!.gitignore
-__pycache__/
-*.pyc
-*.pyo
-.venv/
+# /data/output/
+# .*
+# !.gitignore
+# __pycache__/
+# *.pyc
+# *.pyo
+# .venv/
